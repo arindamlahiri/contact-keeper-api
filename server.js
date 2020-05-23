@@ -24,6 +24,7 @@ app.listen(PORT, () => {
         if(err) throw err
         
         app.locals.db = db
+        app.locals.dbo = db.db('contact-keeper')
         console.log(`And db connected`)
     } )
 })
