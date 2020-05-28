@@ -16,7 +16,7 @@ router.get('/', auth, async(req,res) => {
     try {
         const user = await db.db('contact-keeper').collection('users').findOne({_id:new objectId(req.user.id)},{projection:{password:0}})
 
-        res.json({user})
+        res.json(user)
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ msg:"Server error" })
@@ -43,7 +43,7 @@ router.post('/',[
         if(!user) return res.status(400).json({ msg: "Invalid credentials" })
 
         const isMatch = await bcrypt.compare(password,user.password)
-        if(!isMatch) return res.status(400).json({ msg: "Wrong password" })
+        if(!isMatch) return res.status(400).json({ msg: "Invalid credentials" })
 
         const payload = {
             user:{

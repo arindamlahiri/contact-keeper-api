@@ -13,7 +13,7 @@ router.get('/',auth, async(req,res) => {
     try {
         const contacts = await dbo.collection('contacts').find({user:req.user.id}).toArray()
 
-        res.json(contacts)
+        res.json(contacts.reverse())
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ msg: "Server error" })
