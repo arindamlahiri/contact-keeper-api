@@ -37,6 +37,7 @@ router.post('/',[
 
     let db = req.app.locals.db
     const { email, password } = req.body
+    console.log(req.hostname)
 
     try {
         let user = await db.db('contact-keeper').collection('users').findOne({email})
