@@ -34,6 +34,6 @@ app.listen(PORT, () => {
         app.locals.db = db
         app.locals.dbo = db.db('contact-keeper')
         console.log(`And db connected`)
-        console.log(req.hostname)
+        
     } )
 })
